@@ -12,13 +12,13 @@ const Navbar = () => {
         }
     },[menu])
     return (
-        <header className={`fixed flex w-full z-50 transition-all duration-300`}>
+        <header className={` flex w-full z-50 transition-all duration-300`}>
             <div className="container mx-auto px-4 py-4">
                 <div className="flex items-center justify-between lg:px-25">
                     <div className="flex items-center">
                         <a href="/" className='flex items-center'>
                             <span className='text-red-700 font-bold text-3xl'>
-                                Nucloxy <span className="text-white">Watch</span>
+                                Vajra <span className="text-white">Watch</span>
                             </span>
                         </a>
                     </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
                             </div>
                             <button className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer'><CiSearch className="text-white text-2xl" /></button>
                         </div>
-                        <div className="">
+                        <div className="relative w-full">
                             {/* search result */}
                             <div className="absolute mt-2 w-full bg-neutral-800 rounded-lg shadow-lg overflow-hidden z-50">
                                 <ul>
