@@ -28,7 +28,7 @@ const MovieSlider = () => {
                         <div className="min-w-50 md:min-w-60 snap-start relative cursor pointer group cursor-pointer">
                             <div className="rounded-lg overflow-hidden bg-neutral-800">
                                 <div className="relative aspect-2/3">
-                                    <img src="" className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-35" />
+                                    <img src="/" className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-35" />
                                 </div>
                             </div>
                             <div className="mt-3">

@@ -34,7 +34,7 @@ const MovieDetails = () => {
                                 <div className="w-32 md:w-64 shrink-0 mb-4 md:mb-0">
                                     <div className="rounded-lg overflow-hidden shadow-lg border border-neutral-700">
                                         {/* conditional rendering */}
-                                        <img src="" alt="" className="w-full h-auto " />
+                                        <img src="/" alt="" className="w-full h-auto " />
                                         {/* else */}
                                         <div className="w-full aspect-2/3 bg-neutral-700 flex items-center justify-center">No poster Available.</div>
                                     </div>
