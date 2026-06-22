@@ -5,7 +5,7 @@ import { FaStar, FaPlayCircle, FaPlus } from "react-icons/fa";
 
 const MovieDetails = () => {
     return (
-        <div className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/90 backdrop-blur-sm overflow-auto h-screen'>
+        <div className='hidden inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/90 backdrop-blur-sm overflow-auto h-screen'>
             <div className="relative w-full max-w-5xl bg-neutral-800 rounded-lg shadow-xl min-h-[85vh] md:min-h-[65vh] lg:min-h-[60vh] overflow-auto scrollbar-none">
                 {/* close button */}
                 <button className="absolute top-4 right-4 z-50 p-2 rounded-full  bg-neutral-700/80 hover:bg-neutral-600/80 transition-all cursor-pointer">

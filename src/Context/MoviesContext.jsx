@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { fetchGenre, fetchMovieByGenre, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies } from '../Services/api.js'
+import { fetchGenre, fetchMovieByGenre, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies, searchMovies } from '../Services/api.js'
 
 export const userMoviesContext = createContext()
 
@@ -20,7 +20,7 @@ const MoviesContext = ({ children }) => {
                     fetchTrendingMovies(),
                     fetchPopularMovies(),
                     fetchTopRatedMovies(),
-                    fetchGenre(),
+                    fetchGenre()
                 ])
 
                 setTrendingMovies(trending)
@@ -33,6 +33,7 @@ const MoviesContext = ({ children }) => {
                 setLoading(false);
             }
         }
+        fetchMovieData();
     }, [])
 
     const openMoviesDetails = (movieDetail) => {

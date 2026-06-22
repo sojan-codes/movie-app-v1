@@ -7,45 +7,45 @@ const BASE_URL = 'https://api.themoviedb.org/3'
 export const fetchTrendingMovies = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
-        console.log(response.data)
+
         const data = response.data;
         return data.results;
-    } catch (e) {
-        console.error("Error while fetching API", e)
+    } catch (err) {
+        console.error("Error while fetching API", err)
     }
 }
 
 export const fetchPopularMovies = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/popular/movie/day?api_key=${API_KEY}`)
-        console.log(response.data)
+        const response = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
+
         const data = response.data;
         return data.results;
-    } catch (e) {
-        console.error("Error while fetching API", e)
+    } catch (err) {
+        console.error("Error while fetching API", err)
     }
 }
 
 export const fetchTopRatedMovies = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/top_rated/movie/day?api_key=${API_KEY}`)
-        console.log(response.data)
+        const response = await axios.get(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`)
+
         const data = response.data;
         return data.results;
-    } catch (e) {
-        console.error("Error while fetching API", e)
+    } catch (err) {
+        console.error("Error while fetching API", err)
         return [];
     }
 }
 
 export const fetchMovieByGenre = async (genreID) => {
     try {
-        const responce = axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
-        console.log(responce.data)
+        const response = axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
+
         const data = response.data;
         return data.results;
-    } catch (e) {
-        console.error('Error fetching the data', e)
+    } catch (err) {
+        console.error('Error fetching the data', err)
         return []
     }
 }
@@ -58,8 +58,8 @@ export const fetchGenre = async () => {
         const data = response.data;
         return data.genres;
 
-    } catch (e) {
-        console.error('Error fetching the data', e)
+    } catch (err) {
+        console.error('Error fetching the data', err)
         return [];
     }
 }
@@ -72,8 +72,8 @@ export const fetchMovieDetails = async (movie_id) => {
         const data = response.data;
         return data;
 
-    } catch (e) {
-        console.error('Error fetching the data', e)
+    } catch (err) {
+        console.error('Error fetching the data', err)
         return [];
     }
 }
@@ -86,8 +86,8 @@ export const searchMovies = async (movieName) => {
         const data = response.data;
         return data.results;
 
-    } catch (e) {
-        console.error('Error fetching the data', e)
+    } catch (err) {
+        console.error('Error fetching the data', err)
         return [];
     }
 }
