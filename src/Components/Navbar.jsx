@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { CiSearch, CiMenuFries } from "react-icons/ci"
 import { RiCloseLargeFill } from "react-icons/ri";
 import { userMoviesContext } from '../Context/MoviesContext';
@@ -12,12 +12,23 @@ const Navbar = () => {
     const [isSearching, setIsSearching] = useState(false);
     const [showSearchResult, setShowSearchResult] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    console.log(searchQuery);
+    const [showSearch, setShowSearch] = useState(false)
+
+    const searchContainerRef = useRef(null)
+    useEffect(() => {
+        const handleSearch = (event) => {
+            if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+                setShowSearch(false);
+            }
+        }
+        document.addEventListener('mousedown', handleSearch)
+        return () => { document.removeEventListener('mousedown', handleSearch) }
+    }, [])
+    console.log(showSearch)
 
     useEffect(() => {
         searchMovies(searchQuery).then(result => {
             setSearchResult(result)
-            console.log(searchResult)
         }).catch((err) => {
             setSearchResult('Error in fetching Movie', err)
         })
@@ -67,9 +78,9 @@ const Navbar = () => {
                     </nav>
                     {/*  Search bar */}
                     <div className="relative hidden lg:block">
-                        <div className='hidden md:block relative search-container'>
+                        <div className='hidden md:block relative search-container' ref={searchContainerRef}>
                             <div className="relative">
-                                <input type="text" className='bg-neutral-800/80 text-white px-4 py-2 rounded-full text-sm w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-700/70' placeholder='Search Movies...' onChange={(e) => {
+                                <input type="text" className='bg-neutral-800/80 text-white px-4 py-2 rounded-full text-sm w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-700/70' placeholder='Search Movies...' onClick={() => setShowSearch(true)} onChange={(e) => {
                                     setSearchQuery(e.target.value)
                                     setIsSearching(true)
                                 }
@@ -79,7 +90,7 @@ const Navbar = () => {
                         </div>
                         {/* dropdown */}
                         {
-                            isSearching && searchQuery && (
+                            showSearch && isSearching && searchQuery && (
                                 searchResult.length > 0 ? (
                                     <div className="absolute mt-2 w-80 bg-neutral-800 rounded-lg shadow-lg overflow-hidden z-50 left-0 h-100">
                                         <ul className='overflow-x-scroll h-full scrollbar-none'>
