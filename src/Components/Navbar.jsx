@@ -24,7 +24,6 @@ const Navbar = () => {
         document.addEventListener('mousedown', handleSearch)
         return () => { document.removeEventListener('mousedown', handleSearch) }
     }, [])
-    console.log(showSearch)
 
     useEffect(() => {
         searchMovies(searchQuery).then(result => {
@@ -80,7 +79,9 @@ const Navbar = () => {
                     <div className="relative hidden lg:block">
                         <div className='hidden md:block relative search-container' ref={searchContainerRef}>
                             <div className="relative">
-                                <input type="text" className='bg-neutral-800/80 text-white px-4 py-2 rounded-full text-sm w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-700/70' placeholder='Search Movies...' onClick={() => setShowSearch(true)} onChange={(e) => {
+                                <input type="text" className='bg-neutral-800/80 text-white px-4 py-2 rounded-full text-sm w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-700/70' placeholder='Search Movies...' onFocus={() => {
+                                    setShowSearch(true)
+                                }} onChange={(e) => {
                                     setSearchQuery(e.target.value)
                                     setIsSearching(true)
                                 }
@@ -92,8 +93,8 @@ const Navbar = () => {
                         {
                             showSearch && isSearching && searchQuery && (
                                 searchResult.length > 0 ? (
-                                    <div className="absolute mt-2 w-80 bg-neutral-800 rounded-lg shadow-lg overflow-hidden z-50 left-0 h-100">
-                                        <ul className='overflow-x-scroll h-full scrollbar-none'>
+                                    <div className="absolute mt-2 w-80 bg-neutral-800 rounded-lg shadow-lg overflow-hidden z-50 left-0 overflow-y-scroll max-h-100 scrollbar-none">
+                                        <ul className='h-full'>
                                             {searchResult.map((data, idx) => {
                                                 return <li key={idx} className='hover:bg-neutral-700 w-full'>
                                                     <button className='flex items-center p-3 w-full text-left cursor-pointer'>
